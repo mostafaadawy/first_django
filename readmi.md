@@ -47,4 +47,4 @@ python manage.py runserver
 ````
 - now open the browser by clicking the generated link `127.0.0.1:8000`
 
-# At that moment first_django project repo can be accessed from that [link]()
+# At that moment first_django project repo can be accessed from development branch where master is the original setup
