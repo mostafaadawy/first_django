@@ -287,4 +287,5 @@ Here are some key points that will help you-
 
 # Django Templating
 - where we make our html powerful
-- 
+- we gonna use some builtin shortcuts template that django has
+- ` return render(request, "home.html",{})`  passing the request, file to be rendered and data
