@@ -61,4 +61,7 @@ python manage.py runserver
 - creating app profiles `python manage.py startapp profile`
 - creating app cart `python manage.py startapp cart`
 - in product model to save data  we discripbe the required data fields
+- adding our in in settings
+- as we change something in database we have to call makemigration to allow checking models and adding its effect in database `python manage.py makemigrations`
+
 
