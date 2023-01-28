@@ -60,4 +60,5 @@ python manage.py runserver
 - creating app blog `python manage.py startapp blog`
 - creating app profiles `python manage.py startapp profile`
 - creating app cart `python manage.py startapp cart`
--
+- in product model to save data  we discripbe the required data fields
+
