@@ -92,3 +92,7 @@ python manage.py runserver
 - previous example shows the textfield but actually we have many field types
 - Note if we need to cancel all migrations in this project we can delete all files in product migrations and pycache leave init only
 - we can also delete db.sqlite3 database
+- from django modelfields we can try these fields
+- if we use charField max_length is required as same as decimalField requires decimal place and max digits you can check the documentation of django and also when error the interpreter will tell us
+- we can remove default from summary where it is now create at the beginning
+- make the 2 migration commands makemigrations and migrate to 
