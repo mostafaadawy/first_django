@@ -3,7 +3,9 @@
 
 {% block content %}
 <h1>Home</h1>
-        <h1>{{ My_text|capfirst }}</h1>
+        <h1>{{ My_text|capfirst|title }}</h1>
+        <h1>{{ My_ht|safe }}</h1>
+        <h1>{{ My_ht|striptags }}</h1>
         <h1>{{ My_text|capfirst|upper }}</h1>
         <h1>{{ My_text|capfirst|upper|add:" hi" }}</h1>
         <p>{{ My_number }}</p>

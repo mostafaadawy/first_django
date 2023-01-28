@@ -358,3 +358,4 @@ def about_view(request, *args, **kwargs):
 - example of make first char capital `{{ My_text|capfirst }}`
 - we can stack many filter together ` <h1>{{ My_text|capfirst|upper|add:" hi" }}</h1>`  
 - for more filters such as cycle and filters check the [doc](https://docs.djangoproject.com/en/4.1/ref/templates/builtins/)
+- other useful filters `safe` or `striptags` that extract html and render it but securely unsafe and `title` that titles certain data 
