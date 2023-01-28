@@ -105,3 +105,6 @@ here is some important notifications about models
 - actually as this is an automatic file generation so model here defines the form validation also so when `blank = False` it means `not required` field and in the edit and view we will notice that the fields name is `normal` while in case it equals `True` the field name by default will be written in `bold` and when trying to summit the form without that field it will pop up a `validation error` of missing field.
 
 the comparison file will be found for each migration in migration folder in the added app/component
+
+# Custom HomePage
+- create a new app called pages `python manage.py startapp pages`
