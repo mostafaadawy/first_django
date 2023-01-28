@@ -64,5 +64,8 @@ python manage.py runserver
 - adding our in in settings
 - as we change something in database we have to call makemigration to allow checking models and adding its effect in database `python manage.py makemigrations`
 - do not make `python manage.py migrate`  after every time we make `python manage.py makemigrations`
-
+- when asking for Quit, and let me add a default in models.py we select this option and adding default to the field that we just want to insert but the question is what is this about?
+- actually when you create a table in database it doesn't matter what is default except for some cases but the most required default value will be when editing a table , here the database wants to know how to deal with previous records where it is live table that mean it may contain records
+- so to solve this issue we have to defined a default value for the newly added field such as `summary = models.TextField(default="this is default example")`
+- run the 2 command makemigrations and migrate again
 
