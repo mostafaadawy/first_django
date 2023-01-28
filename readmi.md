@@ -71,4 +71,22 @@ python manage.py runserver
 - we have to register model in products admin.py to use it such as `from .models import Product` where `.` in `.model` is called relative import it means in the same folder 
 - then we have to register it like `admin.site.register(Product)` when we registering it in admin it will add it in view and edite save and update all crude operations will be made automatically  and we can check this in browser admin
 
+## Create App Objects in python shell like laravel tinker
+- as we using admin before to create product know we will use python shell
+- we can access python shell by cmd `python manage.py shell`
+- the difference from python is that shell work as wrapper connects our project so when we import or call some apps component in shell it is work it is something like laravel tinker
+- so we can write the same code as we write it in admin in product to test it line by line or to implement something
+- this code snippets we can write in shell
+```sh
+>> from products.models import Product
+>>> from products.models import Product
+>>> Product.objects.all()
+<QuerySet [<Product: Product object (1)>]>
+>>> Product.objects.create(title='Prooduct 2', description='from shell', price='200', summary='hey summary shell')
+<Product: Product object (2)>
+>>> 
+```
+- where `Product.objects.all() will call all records from Products table
+- and also we can create new object/record
+
 
