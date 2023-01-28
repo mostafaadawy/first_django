@@ -279,3 +279,6 @@ Here are some key points that will help you-
 - we have to wrape our view code to a route to access it
 - where in settings we knew that routes in django url file
 - in `urls.py` add the route for our app
+
+# URL Routing and requests
+- creating some functions for calling httpresponce and import it in urls then create route link for every one 
