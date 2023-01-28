@@ -282,5 +282,9 @@ Here are some key points that will help you-
 
 # URL Routing and requests
 - creating some functions for calling httpresponce and import it in urls then create route link for every one 
-- to debug reading the received args and kwarg just print it and debug in the console runing the server
+- to debug reading the received args and kwarg just print it and debug in the console running the server
+- `request.user` return the user in debugging we can use with middleware later if logout give `anonymous user` means not logged in
+
+# Django Templating
+- where we make our html powerful
 - 

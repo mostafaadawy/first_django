@@ -4,14 +4,16 @@ from django.shortcuts import render
 # Create your views here.
 
 
-def home_view(*args, **kwargs):
-    print(args, kwargs)
+def home_view(request, *args, **kwargs):
+    print('args', args)
+    print('kwargs', kwargs)
+    print('request', request.user)
     return HttpResponse("<h1>Home Page</h1>")
 
 
-def contact_view(*args, **kwargs):
+def contact_view(request, *args, **kwargs):
     return HttpResponse("<h1>Contacts</h1>")
 
 
-def about_view(*args, **kwargs):
+def about_view(request, *args, **kwargs):
     return HttpResponse("<h1>about</h1>")
