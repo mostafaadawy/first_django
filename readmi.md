@@ -68,4 +68,7 @@ python manage.py runserver
 - actually when you create a table in database it doesn't matter what is default except for some cases but the most required default value will be when editing a table , here the database wants to know how to deal with previous records where it is live table that mean it may contain records
 - so to solve this issue we have to defined a default value for the newly added field such as `summary = models.TextField(default="this is default example")`
 - run the 2 command makemigrations and migrate again
+- we have to register model in products admin.py to use it such as `from .models import Product` where `.` in `.model` is called relative import it means in the same folder 
+- then we have to register it like `admin.site.register(Product)`
+
 
