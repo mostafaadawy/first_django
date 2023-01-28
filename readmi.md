@@ -378,3 +378,6 @@ def about_view(request, *args, **kwargs):
 - add url to link view/controller and url
 - can double check condtion `{% if description != None and description != "" %} ` 
 - an error that must not happen we have to take care because of lake of interpreter where  i forgot space after != and "" and that caused error
+
+- instead of sending individuals from object we can send object itself
+
