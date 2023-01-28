@@ -292,3 +292,6 @@ Here are some key points that will help you-
 - after we creating a folder templates and creating a file html for the render but still we cant not access that file file where templates folder it self is not defined 
 - to define the templating folder we have to define the path id dir in setting TEMPLATES as follows `'DIRS': [os.path.join("templates")],`
 - do the same for others
+# Django Templating Engine Basics
+- here we will define how to shrink the render html to layout extended and just we add the deferent code area 
+- getting variable data by calling through `{{  }}` inside the html file
