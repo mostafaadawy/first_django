@@ -314,5 +314,10 @@ Here are some key points that will help you-
  {% endblock %}
 ```
 # include template Tag 
+- the objective of inheritance to remove redundant code and to reduce complexly and to allow more reduction we can use `{% include 'navbar.html'%}` in base file or even others and that defers from previous where it will insert that code patch to your template as it is and that instead of writing in one file a lot of code that makes you confused
+
+# Contexting passing data Rendering Context in Template
+
+
 
 
