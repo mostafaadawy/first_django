@@ -3,21 +3,23 @@
 
 {% block content %}
 <h1>Home</h1>
-        <h1>{{ My_text }}</h1>
+        <h1>{{ My_text|capfirst }}</h1>
+        <h1>{{ My_text|capfirst|upper }}</h1>
+        <h1>{{ My_text|capfirst|upper|add:" hi" }}</h1>
         <p>{{ My_number }}</p>
         <ul>
                 {% for item in My_List %}
                         {% if item == 111 %}
                                 <li>
-                                        {{ forloop.counter }}- {{ item }} is integer
+                                        {{ forloop.counter }} - {{ item|add:100 }} is integer
                                 </li>
                         {% elif item == "111" %}
                                 <li>
-                                        {{ forloop.counter }}- {{ item }} is string
+                                        {{ forloop.counter }} - {{ item }} is string
                                 </li>
                         {% else %}
                                 <li>
-                                        {{ forloop.counter }}- {{ item }} is boolean
+                                        {{ forloop.counter }} - {{ item }} is boolean
                                 </li>
                         {% endif %}
                 {% endfor %}

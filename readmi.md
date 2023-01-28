@@ -351,3 +351,10 @@ def about_view(request, *args, **kwargs):
     return render(request, "about.html", my_context)
 ```
 - here is the extra feature from python `{{ forloop.counter }}` returns the index of the current element in the loop
+
+# Builtin filter tag filter
+- it is a fast function that can be used 
+- example of addition number to item `{{ item|add:100 }}`
+- example of make first char capital `{{ My_text|capfirst }}`
+- we can stack many filter together ` <h1>{{ My_text|capfirst|upper|add:" hi" }}</h1>`  
+- for more filters such as cycle and filters check the [doc](https://docs.djangoproject.com/en/4.1/ref/templates/builtins/)
