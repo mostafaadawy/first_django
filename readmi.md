@@ -69,6 +69,6 @@ python manage.py runserver
 - so to solve this issue we have to defined a default value for the newly added field such as `summary = models.TextField(default="this is default example")`
 - run the 2 command makemigrations and migrate again
 - we have to register model in products admin.py to use it such as `from .models import Product` where `.` in `.model` is called relative import it means in the same folder 
-- then we have to register it like `admin.site.register(Product)`
+- then we have to register it like `admin.site.register(Product)` when we registering it in admin it will add it in view and edite save and update all crude operations will be made automatically  and we can check this in browser admin
 
 
