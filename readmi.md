@@ -88,5 +88,7 @@ python manage.py runserver
 ```
 - where `Product.objects.all() will call all records from Products table
 - and also we can create new object/record
-
-
+## New Model Fields 
+- previous example shows the textfield but actually we have many field types
+- Note if we need to cancel all migrations in this project we can delete all files in product migrations and pycache leave init only
+- we can also delete db.sqlite3 database
