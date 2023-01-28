@@ -295,3 +295,14 @@ Here are some key points that will help you-
 # Django Templating Engine Basics
 - here we will define how to shrink the render html to layout extended and just we add the deferent code area 
 - getting variable data by calling through `{{  }}` inside the html file
+- to create base layout create file html base,html
+- inside this file we add all required scripts styles title and meta data 
+- inside body prepare the place where to insert different code by `{% block content %}{% endblock %}`
+- in other files we call the base file `{% extends 'base.html'%}`
+- wrap thw required file code by 
+```sh
+{% block content %}
+        <!-- replace me -->
+ {% endblock %}
+```
+- 
