@@ -44,7 +44,20 @@ django-admin startproject first_django
 ```sh
 cd first_django
 python manage.py runserver
-````
+```
 - now open the browser by clicking the generated link `127.0.0.1:8000`
+# At that moment first_django project repo can be accessed from that [link]()
 
-# At that moment first_django project repo can be accessed from development branch where master is the original setup
+# start working on the project 
+- after `python manage.py runserver` to start the project on browser
+- we should migrate database `python manage.py migrate`
+- creating superadmin `python manage.py createsuperuser`
+- username mostafa login email mostafa_adawy@ymail.com and pw is root123#
+- app in django matches component in others
+- to create our first app/component 
+- not that all whenever we need to make command or use manage.py we have to be the in the root od the project
+- creating our first app `python manage.py startapp products`
+- creating app blog `python manage.py startapp blog`
+- creating app profiles `python manage.py startapp profile`
+- creating app cart `python manage.py startapp cart`
+-
