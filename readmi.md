@@ -95,4 +95,5 @@ python manage.py runserver
 - from django modelfields we can try these fields
 - if we use charField max_length is required as same as decimalField requires decimal place and max digits you can check the documentation of django and also when error the interpreter will tell us
 - we can remove default from summary where it is now create at the beginning
-- make the 2 migration commands makemigrations and migrate to 
+- make the 2 migration commands makemigrations and migrate
+- as we already deling our sqlite file so our superuser is deleted so we need to create superuser with same credentials  
