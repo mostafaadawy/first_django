@@ -358,4 +358,23 @@ def about_view(request, *args, **kwargs):
 - example of make first char capital `{{ My_text|capfirst }}`
 - we can stack many filter together ` <h1>{{ My_text|capfirst|upper|add:" hi" }}</h1>`  
 - for more filters such as cycle and filters check the [doc](https://docs.djangoproject.com/en/4.1/ref/templates/builtins/)
-- other useful filters `safe` or `striptags` that extract html and render it but securely unsafe and `title` that titles certain data 
+- other useful filters `safe` or `striptags` that extract html and render it but securely unsafe and `title` that titles certain data
+
+# Render Data from Database with a Model
+- try dealing with model from shell first `python manage.py shell`
+- as we can see we can retrive data from database as follows where dir method is used to display properties or methods comes from database table or model 
+```sh
+>>> from products.models import Product
+>>> obj = Product.objects.get(id=1)
+>>> dir(obj)
+['DoesNotExist', 'MultipleObjectsReturned', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_check_column_name_clashes', '_check_field_name_clashes', '_check_fields', '_check_id_field', '_check_index_together', '_check_local_fields', '_check_long_column_names', '_check_m2m_through_same_relationship', '_check_managers', '_check_model', '_check_model_name_db_lookup_clashes', '_check_ordering', '_check_swappable', '_check_unique_together', '_do_insert', '_do_update', '_get_FIELD_display', '_get_next_or_previous_by_FIELD', '_get_next_or_previous_in_order', '_get_pk_val', '_get_unique_checks', '_meta', '_perform_date_checks', '_perform_unique_checks', '_save_parents', '_save_table', '_set_pk_val', '_state', 'check', 'checkThat', 'clean', 'clean_fields', 'date_error_message', 'delete', 'description', 'from_db', 'full_clean', 'get_deferred_fields', 'id', 'objects', 'pk', 'prepare_database_save', 'price', 'refresh_from_db', 'save', 'save_base', 'serializable_value', 'summary', 'title', 'unique_error_message', 'validate_unique']
+>>> obj.title
+'first product'
+>>>
+```
+# at that moment we were trying to test but the right thing is to keep all related methods in one place so we will work in product view
+- create folder product in template to contain all rendered files related to product
+- in product view.py create function to return render file contexted with product get to show detail view
+- add url to link view/controller and url
+- can double check condtion `{% if description != None and description != "" %} ` 
+- an error that must not happen we have to take care because of lake of interpreter where  i forgot space after != and "" and that caused error
