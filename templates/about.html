@@ -3,6 +3,23 @@
 
 {% block content %}
 <h1>Home</h1>
-        <h1>About</h1>
-        <p>this a template</p>
+        <h1>{{ My_text }}</h1>
+        <p>{{ My_number }}</p>
+        <ul>
+                {% for item in My_List %}
+                        {% if item == 111 %}
+                                <li>
+                                        {{ forloop.counter }}- {{ item }} is integer
+                                </li>
+                        {% elif item == "111" %}
+                                <li>
+                                        {{ forloop.counter }}- {{ item }} is string
+                                </li>
+                        {% else %}
+                                <li>
+                                        {{ forloop.counter }}- {{ item }} is boolean
+                                </li>
+                        {% endif %}
+                {% endfor %}
+        </ul>
  {% endblock %}

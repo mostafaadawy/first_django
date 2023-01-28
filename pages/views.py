@@ -18,7 +18,12 @@ def contact_view(request, *args, **kwargs):
 
 
 def about_view(request, *args, **kwargs):
-    return render(request, "about.html", {})
+    my_context = {
+        "My_text": "Context Text",
+        "My_number": 123456789,
+        "My_List": [111, "111", True]
+    }
+    return render(request, "about.html", my_context)
 
 
 def social_view(request, *args, **kwargs):

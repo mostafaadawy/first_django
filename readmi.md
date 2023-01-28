@@ -317,7 +317,39 @@ Here are some key points that will help you-
 - the objective of inheritance to remove redundant code and to reduce complexly and to allow more reduction we can use `{% include 'navbar.html'%}` in base file or even others and that defers from previous where it will insert that code patch to your template as it is and that instead of writing in one file a lot of code that makes you confused
 
 # Contexting passing data Rendering Context in Template
-
-
+- collapsing our varaiables that we want to send in my_context object
+- using `{{ }}` to extract data in html
+- using `{% %}` to call python commands inside html
+- example for loop and if 
+```sh
+<ul>
+    {% for item in My_List %}
+            {% if item == 111 %}
+                    <li>
+                            {{ forloop.counter }}- {{ item }} is integer
+                    </li>
+            {% elif item == "111" %}
+                    <li>
+                            {{ forloop.counter }}- {{ item }} is string
+                    </li>
+            {% else %}
+                    <li>
+                            {{ forloop.counter }}- {{ item }} is boolean
+                    </li>
+            {% endif %}
+    {% endfor %}
+</ul>
+```
+- where we send the list from view.py
+```sh
+def about_view(request, *args, **kwargs):
+    my_context = {
+        "My_text": "Context Text",
+        "My_number": 123456789,
+        "My_List": [111, "111", True]
+    }
+    return render(request, "about.html", my_context)
+```
+- here is the extra feature from python `{{ forloop.counter }}` returns the index of the current element in the loop
 
 
