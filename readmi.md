@@ -351,5 +351,3 @@ def about_view(request, *args, **kwargs):
     return render(request, "about.html", my_context)
 ```
 - here is the extra feature from python `{{ forloop.counter }}` returns the index of the current element in the loop
-
-
