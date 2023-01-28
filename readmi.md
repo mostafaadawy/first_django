@@ -108,3 +108,4 @@ the comparison file will be found for each migration in migration folder in the 
 
 # Custom HomePage
 - create a new app called pages `python manage.py startapp pages`
+- adding app pages to setting Installed Apps
