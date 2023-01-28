@@ -97,3 +97,11 @@ python manage.py runserver
 - we can remove default from summary where it is now create at the beginning
 - make the 2 migration commands makemigrations and migrate
 - as we already deling our sqlite file so our superuser is deleted so we need to create superuser with same credentials  
+## Change a Model
+here is some important notifications about models 
+- when we make `makemigartion` at just compare the migrated class fields if the class is already exists or not  to crate it also checking the calling of fields the type and the required argument where it for example refuses to use `charField` without argument `maxLength` 
+- in case the class is already exists and there are some new fields to add it must know how to deal with the previous records that does not have that fields in this case the solution is to allow `null = True` or `default= value` or True and that will tell the interpreter how to fell the previous record we can solve this issue in the model file it self before run `migration` or we can do that in the `shell` by selecting the first option and tell him the default value
+- so what is the difference between `null= True` , `default =  True` and `blank = False` or `blank =  True` ?
+- actually as this is an automatic file generation so model here defines the form validation also so when `blank = False` it means `not required` field and in the edit and view we will notice that the fields name is `normal` while in case it equals `True` the field name by default will be written in `bold` and when trying to summit the form without that field it will pop up a `validation error` of missing field.
+
+the comparison file will be found for each migration in migration folder in the added app/component
