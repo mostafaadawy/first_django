@@ -1,4 +1,4 @@
-# Django
+# Django based video tutorial in this [link](https://www.youtube.com/watch?v=F5mRW0jo-U4)
 ## First Project
 ### Preparing Enviroment
 python django depends on working through wrapper or virtual environment. so the first begins if our operating system is windows is to use git bach terminal and install python and pip if not installed
@@ -276,7 +276,7 @@ Here are some key points that will help you-
 
 
 # View.py 
-- we have to wrape our view code to a route to access it
+- we have to wrap our view code to a route to access it
 - where in settings we knew that routes in django url file
 - in `urls.py` add the route for our app
 
@@ -352,7 +352,7 @@ def about_view(request, *args, **kwargs):
 ```
 - here is the extra feature from python `{{ forloop.counter }}` returns the index of the current element in the loop
 
-# Builtin filter tag filter
+# Builtin tag filter
 - it is a fast function that can be used 
 - example of addition number to item `{{ item|add:100 }}`
 - example of make first char capital `{{ My_text|capfirst }}`
@@ -376,8 +376,15 @@ def about_view(request, *args, **kwargs):
 - create folder product in template to contain all rendered files related to product
 - in product view.py create function to return render file contexted with product get to show detail view
 - add url to link view/controller and url
-- can double check condtion `{% if description != None and description != "" %} ` 
+- can double check condition `{% if description != None and description != "" %} ` 
 - an error that must not happen we have to take care because of lake of interpreter where  i forgot space after != and "" and that caused error
 
 - instead of sending individuals from object we can send object itself
+
+# How Django Templates Load with Apps
+- when we call render for a file we override a template code in the django that can be shown when no path found
+```sh
+django.template.loaders.app_directories.Loader: C:\Users\Dell\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\admin\templates\product\product_detail.html (Source does not exist)
+django.template.loaders.app_directories.Loader: C:\Users\Dell\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\templates\product\product_detail.html (Source does not exist)
+```
 
