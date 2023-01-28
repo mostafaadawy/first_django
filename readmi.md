@@ -290,4 +290,5 @@ Here are some key points that will help you-
 - we gonna use some builtin shortcuts template that django has
 - ` return render(request, "home.html",{})`  passing the request, file to be rendered and data
 - after we creating a folder templates and creating a file html for the render but still we cant not access that file file where templates folder it self is not defined 
-- to define the templating folder we have to define tyhe path id dir in setting as follows ``
+- to define the templating folder we have to define the path id dir in setting TEMPLATES as follows `'DIRS': [os.path.join("templates")],`
+- do the same for others
