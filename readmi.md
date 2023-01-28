@@ -305,4 +305,14 @@ Here are some key points that will help you-
         <!-- replace me -->
  {% endblock %}
 ```
-- 
+- at this point we have make block inheritance 
+- now if we make navbar in base it will appear in all and so on
+- we can make in base file many blocks with deffent names and in files we select whick block we need to change  for example
+```sh
+{% block content2 %}
+        <!-- replace me -->
+ {% endblock %}
+```
+# include template Tag 
+
+
