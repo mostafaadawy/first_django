@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Product(models.Model):
@@ -9,4 +10,5 @@ class Product(models.Model):
     checkThat = models.BooleanField(default=False)
 
     def get_absolute_url(self):
-        return f"/product/{self.id}/"
+        # return f"/product/{self.id}/"
+        return reverse("dynamic_lookup_view", kwargs={"id": self.id})

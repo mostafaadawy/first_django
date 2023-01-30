@@ -609,3 +609,8 @@ def get_absolute_url(self):
 - `f` is used to stringify the number
 - so we can use in html a ref as follows: `<a href="{{ item.get_absolute_url  }}">` instead of `<a href="/product/{{ item.id }}">`
 
+# Django URLs Reverse
+- we will use reserved function called `reverse` that takes reads the keywords `kwargs` from the link which is id in the url and use it in get_absolute_url 
+- to use `reverse` we have to import `from django.urls import reverse`
+- `return f"/product/{self.id}/"` become `return reverse("dynamic_lookup_view", kwargs={"id": self.id})`
+- where `dynamic_lookup_view` is the name of url ` path('product/<int:my_id>/', dynamic_lookup_view, name="dynamic_lookup_view"),`
