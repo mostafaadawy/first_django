@@ -457,7 +457,59 @@ description = forms.CharField(required=False, widget=forms.Textarea(
 - there are a lot of validation fields and methods
 - when we custom we override the default
 - return to commented first form method the standard one 
+- check that code snippet 
+```sh
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = [
+            'title',
+            'description',
+            'price'
+        ]
+```
+- we can custom the widget and by overriding it such as 
 
+```sh
+class ProductForm(forms.ModelForm):
+    title = forms.CharField(label='Title custom', widget=forms.TextInput(
+        attrs={
+            "placeholder": "HI Janna",
+        }
+    ))
+    description = forms.CharField(required=False, widget=forms.Textarea(
+        attrs={
+            "placeholder": "HI Janna",
+            "class": "new-class-name two",
+            "id": "desc",
+            "rows": 12,
+            "cols": 120,
 
+        }
+    ))
+    price = forms.DecimalField(initial=155.5)
+
+    class Meta:
+        model = Product
+        fields = [
+            'title',
+            'description',
+            'price'
+        ]
+```
+- to make validation we create function `def clean_fieldName(self, *args, **kwargs):` for example  `def clean_title(self, *args, **kwargs):`
+- so as the output data after validation can be called by cleaned data we have to prefix the filed by clean
+- it is recommended to use the default validations first as follows `title= self.cleaned_data.get("title")`
+- then adding some other custom conditions check code snippets
+```sh
+    def clean_title(self, *args, **kwargs):
+        title = self.cleaned_data.get("title")
+        if not "mos" in title:
+            raise forms.ValidationError("this is not contains mos")
+        if len(title) < 4:
+            raise forms.ValidationError("short")
+        return title
+```
+- we can check email just by form field type `email = forms.EmailField()`
 
 
