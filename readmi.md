@@ -531,3 +531,13 @@ def render_initial_data(request):
 ```
 - in this snippet  initial=initial_data will overrides instance=obj
 - do not forget to url to that function
+
+# Dynamic URL Routing
+- it means that it contains variables in the url such as what we need for show() edit() in crude operation
+- in url link we add that variable as follows: `path('dynamic/<int:my_id>/', dynamic_lookup_view, name="dynamic_lookup_view"),`
+- where id is sent here `<int:my_id>`
+- and received here in the function `def dynamic_lookup_view(request, my_id):` same name
+- then we use it to get the right object or record `obj = Product.objects.get(id=my_id)`
+- so this obj can be send to the context 
+- note that `<int:my_id>` we can define deferent data types that int like string slug or others
+
