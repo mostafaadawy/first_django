@@ -554,3 +554,42 @@ try:
         raise Http404
 ```
 - so here we handled that exception 
+# Delete and Confirm
+- delete is justed executed by `obj.delete()` and can be handled from get method but for insuring that he mean the delete we make it in POST that mean we need to submit a form
+- in the delete we check first if it is post it means that the submission is done through yes submit in the delete form
+- calling delete then calling redirect to return to view check the snippets 
+- controllers 
+```sh
+def product_delete_view(request, my_id):
+    obj = get_object_or_404(Product, id=my_id)
+    if request.POST:
+        # confirming delete
+        obj.delete()
+        print('debug', obj)
+        return redirect('/products/')
+        # return redirect('../../')
+    context = {
+        'object': obj
+    }
+    return render(request, "products/product_delete.html", context)
+```
+- url code
+```sh
+   path('products/<int:my_id>/delete/',
+         product_delete_view, name="product_delete"),
+```
+- code html
+```sh
+{% extends 'base.html'%}
+
+{% block content %}
+<form action="." method="POST"> 
+    {% csrf_token %}
+    <h1>Do you want to delete the product "{{ object.title }}"?</h1>
+    <p>
+        <a href="../">Cancel</a>
+    </p>
+    <input type="submit" value="Yes">
+</form>
+{% endblock %}
+```
