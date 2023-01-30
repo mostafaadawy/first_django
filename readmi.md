@@ -435,5 +435,26 @@ create() takes 1 positional argument but 2 were given
 # important Note: the differences between first form model is that it bends with model it save make crude operations and also validates data while raw html is describing how to create raw inputs in form in html but the recent pure django form explains only validation not bended form
 
 
+# Form Widgets
+- every field setting for validate and view
+- default for form core as django documentation  required true is default so in each field argument we set the different required argument such as if not required `required=False`
+- we can draw label to input just by writing it as argument in field in form
+- here we have the ability to change widget or view  and also custom validation
+- code snippets
+```sh
+description = forms.CharField(required=False, widget=forms.Textarea(
+        attrs={
+            "placeholder": "HI Janna",
+            "class": "new-class-name two",
+            "id": "desc",
+            "rows": 12,
+            "cols": 120,
+
+        }
+    ))
+```
+
+
+
 
 
