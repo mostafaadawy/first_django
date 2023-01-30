@@ -387,4 +387,24 @@ def about_view(request, *args, **kwargs):
 django.template.loaders.app_directories.Loader: C:\Users\Dell\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\admin\templates\product\product_detail.html (Source does not exist)
 django.template.loaders.app_directories.Loader: C:\Users\Dell\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\templates\product\product_detail.html (Source does not exist)
 ```
+# Django Model Forms
+- Form in django is used to apply validation and pending model in view create and other crude operations 
+- we can begin using form by  create file forms.py
+- here is a code snippet 
+```sh
+from django import forms
+from .models import Product
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = [
+            'title',
+            'description',
+            'price'
+        ]
+```
+- before going deeply in code structure we have to know that form and other standards from the framework make a lot of stuff easy but standard so we can accept the standard code and in this case we can easily implement our issue while django or framework's allow to custom every code piece according to oue objective
+- as we explain before we can use forms to draw our views and make our validations and save our model data in one or two line of codes 
+- from previous code snippet we can notice that we have to import django forms to use it and import the model to bend it with the form also in the meta data we have to bend the required fields as same bending model itself
 
