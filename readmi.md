@@ -540,4 +540,17 @@ def render_initial_data(request):
 - then we use it to get the right object or record `obj = Product.objects.get(id=my_id)`
 - so this obj can be send to the context 
 - note that `<int:my_id>` we can define deferent data types that int like string slug or others
-
+# Handle Missing Objects
+- it discusses what to do if requiring object id that is not exist no record
+- to handel missing object we use get_object_or_404 class from django `from django.shortcuts import render, get_object_or_404` in the controller or view.py
+- we call the object using that function and that will not return uncontrolled error as before but returning a vialed error 404 
+- using `obj = get_object_or_404(Product, id=my_id)` instead of `obj = Product.objects.get(id=my_id)`
+- another way is to use `from django.http import Http404` instead of  `from django.shortcuts import render, get_object_or_404`
+- then using try except like try catch as follows:
+```sh
+try:
+        obj = Product.objects.get(id=my_id)
+    except:
+        raise Http404
+```
+- so here we handled that exception 
