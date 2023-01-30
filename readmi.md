@@ -418,4 +418,22 @@ class ProductForm(forms.ModelForm):
 - taking care of method type
 
 # Pure Django Form
-- 
+- we create class RawProductForm in forms to test
+- it extends or use `class RawProductForm(forms.Form):` `form.Forms` not `ModelForm` as in `class ProductForm(forms.ModelForm):` it is not bended  to model so no meta
+- in the first case `bending model ` it inherits the data type of fields from the model but in the second case standard form it should contains definitions for every field datatype
+- the fields datatype can be defined form.name where these data type are very close to model.name data types with a very small differences such as we may use form.CharField instead of model.textfield in model
+- check django model data fields and forms data fields 
+- when we call the form in view.py `my_from = RawProductForm(request.POST)` it will do validations in this class which is until now just required fields
+- while calling `my_from = RawProductForm()` with empty arguments to use in view drawing and it matches ``my_from = RawProductForm(equest.GET)` but .GET doesn't contain anything so keep it empty
+- as our from is not bended so we cant use `form.save()` but we have to save it using `Product.objects.create(my_from.cleaned_data)`
+- the cleaned data is different data type than excepted to create so it gives this error
+```sh
+TypeError at /create/
+create() takes 1 positional argument but 2 were given
+```
+- the solution is to use `**` to spread arguments inside create `Product.objects.create(**my_from.cleaned_data)`
+# important Note: the differences between first form model is that it bends with model it save make crude operations and also validates data while raw html is describing how to create raw inputs in form in html but the recent pure django form explains only validation not bended form
+
+
+
+
