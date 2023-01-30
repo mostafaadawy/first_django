@@ -593,3 +593,7 @@ def product_delete_view(request, my_id):
 </form>
 {% endblock %}
 ```
+# View of a List of Database Objects
+- match index in laravel
+- create url ` path('product_list/', product_list_view, name='list'),`
+- create `queryset = Product.objects.all()` to call all and send the list to be shown in list
