@@ -414,3 +414,6 @@ class ProductForm(forms.ModelForm):
 - CSRF Is security must fro POST methods
 - we can use form actions for liking a route where `.` period means same url used currently 
 - `action ="https://www.google.com/search" and method "GET" must be get  rename the search ` and `input name `to `q` so you can search google
+- `action="."` return to same url
+- taking care of method type
+

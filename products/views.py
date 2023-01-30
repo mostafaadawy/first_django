@@ -14,6 +14,11 @@ from .forms import ProductForm
 #     return render(request, "products/product_create.html", context)
 
 def product_create_view(request):
+    # print('GET PRINTING', request.GET)
+    # print('POST PRINTING', request.POST)
+    if request.POST:
+        my_new_title = request.POST.get('title')
+        print('my_new_title', my_new_title)
     context = {}
     return render(request, "products/product_test.html", context)
 
