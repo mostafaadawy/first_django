@@ -632,3 +632,13 @@ def get_absolute_url(self):
 - adding some important links and commenting others
 - adding some redirects
 - creating href from list and navbar
+# Class Based View List View
+- Create a new App named blog
+- Add blog to your django project
+- Create a Model named article
+- run Migration
+- Create a Model Form for article
+- Create `article_list.html` and `article_detail.html` Template
+- Add article Model to the admin
+- Save a new article object in the admin
+- confuse? start [here](https://kirr.co/9ypik6)
