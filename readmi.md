@@ -453,7 +453,10 @@ description = forms.CharField(required=False, widget=forms.Textarea(
         }
     ))
 ```
-
+# Form Validation Methods
+- there are a lot of validation fields and methods
+- when we custom we override the default
+- return to commented first form method the standard one 
 
 
 
