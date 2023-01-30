@@ -642,3 +642,4 @@ def get_absolute_url(self):
 - Add article Model to the admin in blog in admin.py register the new model for this app `admin.site.register(Article)` so it can be shown and crude operated from admin automatically
 - Save a new article object in the admin from ui browser
 - confuse? start [here](https://kirr.co/9ypik6)
+- create url for Articles 
