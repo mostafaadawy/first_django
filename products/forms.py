@@ -9,7 +9,7 @@ class ProductForm(forms.ModelForm):
             "placeholder": "HI Janna",
         }
     ))
-    description = forms.CharField(required=False, widget=forms.Textarea(
+    description = forms.CharField(required=True, widget=forms.Textarea(
         attrs={
             "placeholder": "HI Janna",
             "class": "new-class-name two",

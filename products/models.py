@@ -11,4 +11,4 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         # return f"/product/{self.id}/"
-        return reverse("dynamic_lookup_view", kwargs={"id": self.id})
+        return reverse("products:detail", kwargs={"my_id": self.id})

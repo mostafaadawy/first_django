@@ -2,7 +2,38 @@
 {% extends 'base.html'%}
 
 {% block content %}
-    {% for item in object_list %}
-        <p>{{ item.id }} - <a href="{{ item.get_absolute_url  }}">{{ item.title }}</a></p>
-    {% endfor %}
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Summary</th>
+            <th>Action</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in object_list %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td><a href="{{ item.get_absolute_url  }}">{{ item.title }}</a></td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.summary }}</td>
+            <td>
+                <form action="/products/{{ item.id }}/delete/" method="POST"> 
+                    {% csrf_token %}
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+            <td>
+                <form action="/products/{{ item.id }}/update/" method="POST"> 
+                    {% csrf_token %}
+                    <input type="submit" value="Edit">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

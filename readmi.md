@@ -530,7 +530,7 @@ def render_initial_data(request):
     return render(request, "products/product_create.html", context)
 ```
 - in this snippet  initial=initial_data will overrides instance=obj
-- do not forget to url to that function
+- do not forget to add url to that function
 
 # Dynamic URL Routing
 - it means that it contains variables in the url such as what we need for show() edit() in crude operation
@@ -614,3 +614,21 @@ def get_absolute_url(self):
 - to use `reverse` we have to import `from django.urls import reverse`
 - `return f"/product/{self.id}/"` become `return reverse("dynamic_lookup_view", kwargs={"id": self.id})`
 - where `dynamic_lookup_view` is the name of url ` path('product/<int:my_id>/', dynamic_lookup_view, name="dynamic_lookup_view"),`
+- here if url is changed dynamically will be updated as long as the link name is used in reverse function
+
+# App URLs and NameSpacing 
+- using reverse function allow us to change and make it dynamic where it is based name but how about if same name is used?
+- it will redirect to wrong urls
+- to avoid this wrong direction abd to make it modular in order to all folder app and just concatenating to our project and to simplify the url file we can use app url and namesapacing as follows
+- first create url file inside our module or component or app cut and past its related links from the main url file and past it in url inside app product
+- in main url include the sub url class of the product 
+- if we use the links we have to take care that we have to increase in browser link prefix name for the product so we have to avoid duplication in links we past to sub url or app url file
+- we can use namespace to prevent wrong redirection where we can include it when calling a path that define which namespasce we belong
+- do not forget to modify the reverse model get url function to have the namespace as follows
+```sh
+def get_absolute_url(self):
+        return reverse("products:dynamic_lookup_view", kwargs={"id": self.id})
+```
+- adding some important links and commenting others
+- adding some redirects
+- creating href from list and navbar
