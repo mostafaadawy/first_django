@@ -61,7 +61,7 @@ python manage.py runserver
 - creating app profiles `python manage.py startapp profile`
 - creating app cart `python manage.py startapp cart`
 - in product model to save data  we discripbe the required data fields
-- adding our in in settings
+- adding our apps in settings
 - as we change something in database we have to call makemigration to allow checking models and adding its effect in database `python manage.py makemigrations`
 - do not make `python manage.py migrate`  after every time we make `python manage.py makemigrations`
 - when asking for Quit, and let me add a default in models.py we select this option and adding default to the field that we just want to insert but the question is what is this about?
@@ -633,12 +633,12 @@ def get_absolute_url(self):
 - adding some redirects
 - creating href from list and navbar
 # Class Based View List View
-- Create a new App named blog
-- Add blog to your django project
-- Create a Model named article
-- run Migration
-- Create a Model Form for article
-- Create `article_list.html` and `article_detail.html` Template
-- Add article Model to the admin
-- Save a new article object in the admin
+- Create a new App named blog `python manage.py startapp blog`
+- Add blog to your django project `in settings.py add blog to installed apps`
+- Create a Model named article `in models.py create class input argument models.Model and add fields to it `
+- run Migration `python manage.py make migrations` and `python manage.py make migrate`
+- Create a Model Form for article create forms.py and import forms from django and article model from models can check product forms for view and validations 
+- Create `article_list.html` and `article_detail.html` Template in folder blog
+- Add article Model to the admin in blog in admin.py register the new model for this app `admin.site.register(Article)` so it can be shown and crude operated from admin automatically
+- Save a new article object in the admin from ui browser
 - confuse? start [here](https://kirr.co/9ypik6)
