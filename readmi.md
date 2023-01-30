@@ -597,3 +597,15 @@ def product_delete_view(request, my_id):
 - match index in laravel
 - create url ` path('product_list/', product_list_view, name='list'),`
 - create `queryset = Product.objects.all()` to call all and send the list to be shown in list
+
+# Dynamic Linking of URLs
+- using href and a to link a url
+- we do it in a normal a ref but if want to change url it becomes so difficult so use instance method in the model that is used this method keeps a reference for all used urls so we can change any time 
+- in model.py in product 
+```sh
+def get_absolute_url(self):
+    return f"/product/{self.id}/"
+```
+- `f` is used to stringify the number
+- so we can use in html a ref as follows: `<a href="{{ item.get_absolute_url  }}">` instead of `<a href="/product/{{ item.id }}">`
+

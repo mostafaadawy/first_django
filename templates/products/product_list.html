@@ -3,6 +3,6 @@
 
 {% block content %}
     {% for item in object_list %}
-        <p>{{ item.id }} - {{ item.title }}</p>
+        <p>{{ item.id }} - <a href="{{ item.get_absolute_url  }}">{{ item.title }}</a></p>
     {% endfor %}
 {% endblock %}
