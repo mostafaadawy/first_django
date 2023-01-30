@@ -512,4 +512,22 @@ class ProductForm(forms.ModelForm):
 ```
 - we can check email just by form field type `email = forms.EmailField()`
 
+# Initial values for Forms
+- that is used in edit forms so we can initilize the iputs and also we can get  an instance of the object whichh in our caase is record or show check the snippet
+```sh
+def render_initial_data(request):
+    initial_data = {
+        'title': 'this is initial data title',
+    }
+    obj = Product.objects.get(id=1)
+    my_form = ProductForm(request.POST or None,
+                          initial=initial_data, instance=obj)
+    if my_form.is_valid():
+        my_form.save()
+        my_form = ProductForm()
 
+    context = {'form': my_form}
+    return render(request, "products/product_create.html", context)
+```
+- in this snippet  initial=initial_data will overrides instance=obj
+- do not forget to url to that function

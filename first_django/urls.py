@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from pages.views import home_view, contact_view, about_view, social_view
-from products.views import product_detail_view, product_create_view
+from products.views import product_detail_view, product_create_view, render_initial_data
 urlpatterns = [
     path('', home_view, name='home'),
     path('contact/', contact_view, name='contacts'),
@@ -24,5 +24,6 @@ urlpatterns = [
     path('social/', social_view, name='social'),
     path('product/', product_detail_view, name="product_detail"),
     path('create/', product_create_view, name="product_create"),
+    path('initial/', render_initial_data, name="product_render_initials"),
     path('admin/', admin.site.urls),
 ]
