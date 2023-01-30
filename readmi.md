@@ -408,3 +408,9 @@ class ProductForm(forms.ModelForm):
 - as we explain before we can use forms to draw our views and make our validations and save our model data in one or two line of codes 
 - from previous code snippet we can notice that we have to import django forms to use it and import the model to bend it with the form also in the meta data we have to bend the required fields as same bending model itself
 
+# Raw HTML Form
+- we make another template product_test for testing raw html for form
+- note that form by default if we do not define the method is get method
+- CSRF Is security must fro POST methods
+- we can use form actions for liking a route where `.` period means same url used currently 
+- `action ="https://www.google.com/search" and method "GET" must be get  rename the search ` and `input name `to `q` so you can search google
