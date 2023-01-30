@@ -417,3 +417,5 @@ class ProductForm(forms.ModelForm):
 - `action="."` return to same url
 - taking care of method type
 
+# Pure Django Form
+- 
