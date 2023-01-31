@@ -699,5 +699,18 @@ class ArticleCreateView(CreateView):
 - in model we can create function `get_absolute_url()` that uses the kwargs in reverse function to return the url from the url name and id 
 - this function can be called as any property and we can use it with detail and update i.e. any functions in crude that uses id
 - all the methods or properties in these based classes is exists with default and we have to override it or assign value to it or use it 
+- update method or class is same as create except we need and object from the object we want to edit or update so the only thing that is increaesd on the previous code is adding `get_object` as in detail and other functions as detail check the code snippet
+```sh
+class ArticleUpdateView(UpdateView):
+    template_name = 'articles/article_create.html'
+    form_class = ArticleModelForm
 
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Article, id=id_)
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+```
 
