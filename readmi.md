@@ -726,3 +726,4 @@ class ArticleDeleteView(DeleteView):
     def get_success_url(self):
         return reverse('articles:article-list')
 ```
+- as we delete the object if return it will give error where no record for that id in the database so we have to define the get_success to route for another link
