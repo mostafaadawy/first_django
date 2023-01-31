@@ -727,3 +727,5 @@ class ArticleDeleteView(DeleteView):
         return reverse('articles:article-list')
 ```
 - as we delete the object if return it will give error where no record for that id in the database so we have to define the get_success to route for another link
+- as modular project all belongs to app blog should be inside even templates
+- <p style="color:red"> do not forget to make update or edit link GET method to get required object where POST is assigned to send not get

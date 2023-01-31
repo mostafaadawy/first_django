@@ -14,20 +14,20 @@
         </tr>
     </thead>
     <tbody>
-        {% for item in object_list %}
+        {% for instance in object_list %}
         <tr>
-            <td>{{ item.id }}</td>
-            <td><a href="{{ item.get_absolute_url  }}">{{ item.title }}</a></td>
-            <td>{{ item.content }}</td>
-            <td>{{ item.active }}</td>
+            <td>{{ instance.id }}</td>
+            <td><a href='{{ instance.get_absolute_url }}'>{{ instance.title }}</a></td>
+            <td>{{ instance.content }}</td>
+            <td>{{ instance.active }}</td>
             <td>
-                <form action="/articles/{{ item.id }}/delete/" method="POST"> 
+                <form action="/articles/{{ instance.id }}/delete/" method="POST"> 
                     {% csrf_token %}
                     <input type="submit" value="Delete">
                 </form>
             </td>
             <td>
-                <form action="/articles/{{ item.id }}/update/" method="POST"> 
+                <form action="/articles/{{ instance.id }}/update/" method="GET"> 
                     {% csrf_token %}
                     <input type="submit" value="Edit">
                 </form>
