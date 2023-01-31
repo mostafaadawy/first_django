@@ -643,3 +643,8 @@ def get_absolute_url(self):
 - Save a new article object in the admin from ui browser
 - confuse? start [here](https://kirr.co/9ypik6)
 - create url for Articles 
+
+# Class Based Views Detail view
+- note pk is id same name
+- the idea is instead of using functions methods using or based class in other word bending the class to the crude that so to execute such methodolgy we use kwargs to extract the id or other url parameters 
+- benefit of bending class is that we can access its properties from the view

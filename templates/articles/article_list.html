@@ -9,8 +9,8 @@
             <th>Title</th>
             <th>Content</th>
             <th>Active</th>
-            <!-- <th>Action</th>
-            <th>Action</th> -->
+            <th>Action</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -20,18 +20,18 @@
             <td><a href="{{ item.get_absolute_url  }}">{{ item.title }}</a></td>
             <td>{{ item.content }}</td>
             <td>{{ item.active }}</td>
-            <!-- <td>
-                <form action="/products/{{ item.id }}/delete/" method="POST"> 
+            <td>
+                <form action="/articles/{{ item.id }}/delete/" method="POST"> 
                     {% csrf_token %}
                     <input type="submit" value="Delete">
                 </form>
             </td>
             <td>
-                <form action="/products/{{ item.id }}/update/" method="POST"> 
+                <form action="/articles/{{ item.id }}/update/" method="POST"> 
                     {% csrf_token %}
                     <input type="submit" value="Edit">
                 </form>
-            </td> -->
+            </td>
         </tr>
         {% endfor %}
     </tbody>

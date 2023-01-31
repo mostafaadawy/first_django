@@ -1,28 +1,65 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
+from django.views.generic import (
+    CreateView,
+    DetailView,
+    ListView,
+    UpdateView,
+    ListView,
+    DeleteView
+)
+
+from .forms import ArticleModelForm
 from .models import Article
-from .forms import ArticleForm
-# Create your views here.
 
 
-def ArticleListView(request):
-    templateName = 'articles/article_list.html'
-    queryset = Article.objects.all()
-    context = {'object_list': queryset}
-    return render(request, templateName, context)
+class ArticleCreateView(CreateView):
+    template_name = 'articles/article_create.html'
+    form_class = ArticleModelForm
+    queryset = Article.objects.all()  # <blog>/<modelname>_list.html
+    # success_url = '/'
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+    # def get_success_url(self):
+    #    return '/'
 
 
-def ArticleDetailView(request, my_id):
-    obj = Article.objects.get(id=my_id)
-    context = {'object': obj}
-    return render(request, "articles/article_detail.html", context)
+class ArticleListView(ListView):
+    template_name = 'articles/article_list.html'
+    queryset = Article.objects.all()  # <blog>/<modelname>_list.html
 
 
-def ArticleCreateView(request):
-    my_form = ArticleForm(request.POST or None)
-    if my_form.is_valid():
-        my_form.save()
-        my_form = ArticleForm()
-        return redirect('/articles/')
+class ArticleDetailView(DetailView):
+    template_name = 'articles/article_detail.html'
+    # queryset = Article.objects.all()
 
-    context = {'form': my_form}
-    return render(request, "articles/article_create.html", context)
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Article, id=id_)
+
+
+class ArticleUpdateView(UpdateView):
+    template_name = 'articles/article_create.html'
+    form_class = ArticleModelForm
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Article, id=id_)
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+
+class ArticleDeleteView(DeleteView):
+    template_name = 'articles/article_delete.html'
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Article, id=id_)
+
+    def get_success_url(self):
+        return reverse('articles:article-list')
