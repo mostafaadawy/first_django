@@ -646,5 +646,18 @@ def get_absolute_url(self):
 
 # Class Based Views Detail view
 - note pk is id same name
-- the idea is instead of using functions methods using or based class in other word bending the class to the crude that so to execute such methodolgy we use kwargs to extract the id or other url parameters 
+- the idea is instead of using functions methods using or based class in other word bending the class to the crude that so to execute such methodology we use kwargs to extract the id or other url parameters 
 - benefit of bending class is that we can access its properties from the view
+- we use the based class method where it is the easiest brief way to implement
+- we used it as class to inherit other ready existing classes such as `CreateView, DetailView, ListView, UpdateView, DeleteView` by importing them from `django.views.generic ` and we use `.as_view()` to convert the class to view method actually we call view method from this class 
+- these classes work in systematic manner it allow rendering dealing with model anf forms and validation in one step
+- it searches for html templates in same path as the name and for files underscored with list detail as classes names
+- check this code snippet
+```sh
+class ArticleListView(ListView):
+    template_name = 'articles/article_list.html'
+    queryset = Article.objects.all()  # <blog>/<modelname>_list.html
+```
+- class ArticleListView inherits from ListView and we have to assign variable template_name which is class property and we override it by the path
+- the name of html file must ends with _list as we inherits from ListView
+- queryset also in list must be assigned to the model get data where it linked directly to context as we use the name
