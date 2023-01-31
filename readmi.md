@@ -662,4 +662,17 @@ class ArticleListView(ListView):
 - the name of html file must ends with _list as we inherits from ListView
 - queryset also in list must be assigned to the model get data where it linked directly to context `object_list`as we use the name `queryset`
 - so how to call class in url link which needs view method , but this issue is solved just `.as_view()` which calls view function `path('', ArticleListView.as_view(), name='article-list'),` 
+- for class details same as list in naming conventions we use in the tail `_detail ` in html and use as view function in url
+- and to get object in html we restricted by assigning data to `queryset` but as detail is assigned for one id as show crude we hve to define function get_object that reads `kwargs` id then we return `ModelName.objects.get(id=id) or get_oject_or_404(ModelName, id=id) check the code snippet 
+```sh
+class ArticleDetailView(DetailView):
+    template_name = 'articles/article_detail.html'
+    # queryset = Article.objects.all()
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Article, id=id_)
+```
+- as we can see from the code we can neglect queryset where we already get object by get_object function
+- 
 
