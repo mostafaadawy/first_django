@@ -698,4 +698,6 @@ class ArticleCreateView(CreateView):
 ```
 - in model we can create function `get_absolute_url()` that uses the kwargs in reverse function to return the url from the url name and id 
 - this function can be called as any property and we can use it with detail and update i.e. any functions in crude that uses id
-- all the methods or properties in these based classes is exists with default and we have to override it or assign value to it use it 
+- all the methods or properties in these based classes is exists with default and we have to override it or assign value to it or use it 
+
+
