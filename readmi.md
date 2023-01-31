@@ -661,3 +661,5 @@ class ArticleListView(ListView):
 - class ArticleListView inherits from ListView and we have to assign variable template_name which is class property and we override it by the path
 - the name of html file must ends with _list as we inherits from ListView
 - queryset also in list must be assigned to the model get data where it linked directly to context `object_list`as we use the name `queryset`
+- so how to call class in url link which needs view method , but this issue is solved just `.as_view()` which calls view function `path('', ArticleListView.as_view(), name='article-list'),` 
+
