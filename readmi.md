@@ -713,4 +713,16 @@ class ArticleUpdateView(UpdateView):
         print(form.cleaned_data)
         return super().form_valid(form)
 ```
+### for delete view
+- for delete the same restrictions with naming conversions  with using function that is defined the object and delete it self is self defined from delete class we extended check the code snippet
+```sh
+class ArticleDeleteView(DeleteView):
+    template_name = 'articles/article_delete.html'
 
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Article, id=id_)
+
+    def get_success_url(self):
+        return reverse('articles:article-list')
+```
