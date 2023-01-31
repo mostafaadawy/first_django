@@ -674,5 +674,28 @@ class ArticleDetailView(DetailView):
         return get_object_or_404(Article, id=id_)
 ```
 - as we can see from the code we can neglect queryset where we already get object by get_object function
-- 
+### create method based class
+- do the same as list do the required naming and assignments for `queryset` and html file name `_create` and and url use `.as_view()`
+- also there is a required assignment is to assign the `form_class= ModelForm` for validation
+- we also have functions that we can use in the classes such as form_vail to check validity and we can use it also in debugging and this function is done by default in our model
+- we can also define where to go after success in `success_url`
+- check the code snippet
 
+```sh
+class ArticleCreateView(CreateView):
+    template_name = 'articles/article_create.html'
+    form_class = ArticleModelForm
+    queryset = Article.objects.all()  # <blog>/<modelname>_list.html
+    # success_url = '/'
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+    # def get_success_url(self):
+    #    return '/'
+
+```
+- in model we can create function `get_absolute_url()` that uses the kwargs in reverse function to return the url from the url name and id 
+- this function can be called as any property and we can use it with detail and update i.e. any functions in crude that uses id
+- all the methods or properties in these based classes is exists with default and we have to override it or assign value to it use it 
