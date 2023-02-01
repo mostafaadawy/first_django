@@ -824,5 +824,7 @@ class CourseCreateView(View):
         context = {"form": form}
         return render(request, self.template_name, context)
 ```
+<p style="color:red"> Important Note : in MyCourseList  we use filter that means we can use class CourseListView for list and we can inherit it with filter to use it as detail show</p>
+
 
 
