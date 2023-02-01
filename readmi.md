@@ -834,4 +834,49 @@ class CourseCreateView(View):
             raise forms.ValidationError("This is not a valid title")
         return title
 ```
+# Raw Update Class Based View
+- update is the method that combines detail and create so the code has to be as create and includes get of object that has to be updated
+```sh
+class CourseUpdateView(View):
+    template_name = "courses/course_update.html"
+
+    def get_object(self):
+        id = self.kwargs.get('id')
+        obj = None
+        if id is not None:
+            obj = get_object_or_404(Course, id=id)
+        return obj
+
+    def get(self, request, id=None, * args, **kwargs):
+        # GET METHOD
+        context = {}
+        obj = self.get_object()
+        if obj is not None:
+            form = CourseModelForm(instance=obj)
+            context = {"object": obj}
+            context = {"form": form}
+        return render(request, self.template_name, context)
+
+
+    def post(self, request, id=None, * args, **kwargs):
+        # POST METHOD
+        obj = self.get_object()
+        if obj is not None:
+            form = CourseModelForm(request.POST, instance=obj)
+            if form.is_valid():
+                form.save()
+                context = {"object": obj}
+                context = {"form": form}
+                form = CourseModelForm()
+        context = {"form": form}
+        return render(request, self.template_name, context)        
+```
+```sh
+path('<int:id>/update/', CourseUpdateView.as_view(), name='course-update'),
+```
+- first we have to define the get object that reads id from kwargs 
+- then get the object in object or 404 to handel not found error
+- in get and post we exploit the feature of instance to load the object in view
+- we load objects and forms for validation and to draw
+- in post we check received validity then save
 
