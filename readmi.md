@@ -786,4 +786,17 @@ class CourseView(View):
 
 - same as for detail we create class for list 
 - also we need to define queryset
-- 
+- check code
+```sh
+class CourseListView(View):
+    template_name = "courses/course_list.html"
+    queryset = Course.objects.all()
+
+    def get_queryset(self):
+        return self.queryset
+
+    def get(self, request, *args, **kwargs):
+        context = {'object_list': self.queryset}
+        return render(request, self.template_name, context)
+```
+
