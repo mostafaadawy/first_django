@@ -826,5 +826,12 @@ class CourseCreateView(View):
 ```
 <p style="color:red"> Important Note : in MyCourseList  we use filter that means we can use class CourseListView for list and we can inherit it with filter to use it as detail show</p>
 
-
+# Raw Validation on Post Method
+```sh
+    def clean_title(self):
+        title = self.cleaned_data.get('title')
+        if title.lower() == 'abc':
+            raise forms.ValidationError("This is not a valid title")
+        return title
+```
 
