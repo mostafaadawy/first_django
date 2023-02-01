@@ -731,4 +731,7 @@ class ArticleDeleteView(DeleteView):
 - <p style="color:red"> do not forget to make update or edit link GET method to get required object where POST is assigned to send not get </p>
 
 ### Function Based View to class Based View
-- 
+- this is the third method that we can use the set and get for view as class 
+- first of all we will create new app called course so we will do the same previous steps
+- Create a new App named courses `python manage.py startapp courses`
+
