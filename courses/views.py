@@ -6,10 +6,10 @@ from django.views import View
 
 
 class CourseView(View):
-    def get(request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         return render(request, 'about.html', {})
 
-    # def post(request, *args, **kwargs):
+    # def post(self, request, *args, **kwargs):
     #     return render(request, 'about.html', {})
 
 

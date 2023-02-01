@@ -745,5 +745,6 @@ class ArticleDeleteView(DeleteView):
 - create url for Courses 
 - do not forget to include urls file links in main url in the project
 - list view in class based note that function in view function based name is do not matter but in class the name is really matter we should restricted by naming convictions so we can use `my_fbv` function inside class `CourseView` but rename it to get where we will deal with it in class as `set/post and get`
-- 
+- we get an error if we use `def get(request, *args, **kwargs):` where as class we have to include self where it is class and without self we miss meta data `'CourseView' object has no attribute 'META'`
+- to solve this issue insert self in the call to get the meta data from the class `def get(self,request, *args, **kwargs):`
 
