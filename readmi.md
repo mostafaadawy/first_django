@@ -912,3 +912,7 @@ class CourseDeleteView(View):
             return redirect('/courses/')
         return render(request, self.template_name, context)
 ```
+### Custom Mixin for Class Based Views
+- Mixin is the class that weill contain repeated redundant code or function that we use to reduce the redundant 
+- we just call it in inheritance argument to classes and it will implements its code inside the new class
+- for example here is the code that we reduce get object in it 

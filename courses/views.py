@@ -1,43 +1,172 @@
-from django.shortcuts import redirect, render, get_object_or_404
+# from django.shortcuts import redirect, render, get_object_or_404
+# from django.views import View
+# from .models import Course
+# from .forms import CourseModelForm
+# # Create your views here.
+
+# # Base VIEW CLASS  = VIEW
+
+
+# class CourseDeleteView(View):
+#     template_name = "courses/course_delete.html"
+
+#     def get_object(self):
+#         id = self.kwargs.get('id')
+#         obj = None
+#         if id is not None:
+#             obj = get_object_or_404(Course, id=id)
+#         return obj
+
+#     def get(self, request, id=None, * args, **kwargs):
+#         # GET METHOD
+#         context = {}
+#         obj = self.get_object()
+#         if obj is not None:
+#             context = {"object": obj}
+#         return render(request, self.template_name, context)
+
+#     def post(self, request, id=None, * args, **kwargs):
+#         # POST METHOD
+#         context = {}
+#         obj = self.get_object()
+#         if obj is not None:
+#             obj.delete()
+#             context = {"object": None}
+#             return redirect('/courses/')
+#         return render(request, self.template_name, context)
+
+
+# class CourseUpdateView(View):
+#     template_name = "courses/course_update.html"
+
+#     def get_object(self):
+#         id = self.kwargs.get('id')
+#         obj = None
+#         if id is not None:
+#             obj = get_object_or_404(Course, id=id)
+#         return obj
+
+#     def get(self, request, id=None, * args, **kwargs):
+#         # GET METHOD
+#         context = {}
+#         obj = self.get_object()
+#         if obj is not None:
+#             form = CourseModelForm(instance=obj)
+#             context = {"object": obj}
+#             context = {"form": form}
+#         return render(request, self.template_name, context)
+
+#     def post(self, request, id=None, * args, **kwargs):
+#         # POST METHOD
+#         obj = self.get_object()
+#         if obj is not None:
+#             form = CourseModelForm(request.POST, instance=obj)
+#             if form.is_valid():
+#                 form.save()
+#                 context = {"object": obj}
+#                 context = {"form": form}
+#                 form = CourseModelForm()
+#         context = {"form": form}
+#         return render(request, self.template_name, context)
+
+
+# class CourseCreateView(View):
+#     template_name = "courses/course_create.html"
+
+#     def get(self, request, * args, **kwargs):
+#         # GET METHOD
+#         form = CourseModelForm
+#         context = {"form": form}
+#         return render(request, self.template_name, context)
+
+#     def post(self, request, * args, **kwargs):
+#         # POST METHOD
+#         form = CourseModelForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             form = CourseModelForm()
+#         context = {"form": form}
+#         return render(request, self.template_name, context)
+
+
+# class CourseListView(View):
+#     template_name = "courses/course_list.html"
+#     queryset = Course.objects.all()
+
+#     def get_queryset(self):
+#         return self.queryset
+
+#     def get(self, request, *args, **kwargs):
+#         context = {'object_list': self.queryset}
+#         return render(request, self.template_name, context)
+
+
+# class MyListView(CourseListView):
+#     template_name = "courses/course_list.html"
+#     queryset = Course.objects.filter(id=1)
+
+
+# class CourseView(View):
+#     template_name = "courses/course_detail.html"
+
+#     def get(self, request, id=None, *args, **kwargs):
+#         # GET METHOD
+#         context = {}
+#         if id is not None:
+#             # obj = Course.objects.get(id=id)
+#             obj = get_object_or_404(Course, id=id)
+#             context['object'] = obj
+#         return render(request, self.template_name, context)
+
+#     # def get(self, request, id=None, *args, **kwargs):
+#     #     return render(request, 'about.html', {})
+
+
+# def my_fbv(request, *args, **kwargs):
+#     return render(request, 'about.html', {})
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from .models import Course
+
 from .forms import CourseModelForm
-# Create your views here.
+from .models import Course
+# BASE VIEW CLass = VIEW
 
-# Base VIEW CLASS  = VIEW
 
-
-class CourseDeleteView(View):
-    template_name = "courses/course_delete.html"
+class CourseObjectMixin(object):
+    model = Course
 
     def get_object(self):
         id = self.kwargs.get('id')
         obj = None
         if id is not None:
-            obj = get_object_or_404(Course, id=id)
+            obj = get_object_or_404(self.model, id=id)
         return obj
 
-    def get(self, request, id=None, * args, **kwargs):
-        # GET METHOD
+
+class CourseDeleteView(CourseObjectMixin, View):
+    template_name = "courses/course_delete.html"  # DetailView
+
+    def get(self, request, id=None, *args, **kwargs):
+        # GET method
         context = {}
         obj = self.get_object()
         if obj is not None:
-            context = {"object": obj}
+            context['object'] = obj
         return render(request, self.template_name, context)
 
-    def post(self, request, id=None, * args, **kwargs):
-        # POST METHOD
+    def post(self, request, id=None,  *args, **kwargs):
+        # POST method
         context = {}
         obj = self.get_object()
         if obj is not None:
             obj.delete()
-            context = {"object": None}
+            context['object'] = None
             return redirect('/courses/')
         return render(request, self.template_name, context)
 
 
-class CourseUpdateView(View):
-    template_name = "courses/course_update.html"
+class CourseUpdateView(CourseObjectMixin, View):
+    template_name = "courses/course_update.html"  # DetailView
 
     def get_object(self):
         id = self.kwargs.get('id')
@@ -46,41 +175,40 @@ class CourseUpdateView(View):
             obj = get_object_or_404(Course, id=id)
         return obj
 
-    def get(self, request, id=None, * args, **kwargs):
-        # GET METHOD
+    def get(self, request, id=None, *args, **kwargs):
+        # GET method
         context = {}
         obj = self.get_object()
         if obj is not None:
             form = CourseModelForm(instance=obj)
-            context = {"object": obj}
-            context = {"form": form}
+            context['object'] = obj
+            context['form'] = form
         return render(request, self.template_name, context)
 
-    def post(self, request, id=None, * args, **kwargs):
-        # POST METHOD
+    def post(self, request, id=None,  *args, **kwargs):
+        # POST method
+        context = {}
         obj = self.get_object()
         if obj is not None:
             form = CourseModelForm(request.POST, instance=obj)
             if form.is_valid():
                 form.save()
-                context = {"object": obj}
-                context = {"form": form}
-                form = CourseModelForm()
-        context = {"form": form}
+            context['object'] = obj
+            context['form'] = form
         return render(request, self.template_name, context)
 
 
 class CourseCreateView(View):
-    template_name = "courses/course_create.html"
+    template_name = "courses/course_create.html"  # DetailView
 
-    def get(self, request, * args, **kwargs):
-        # GET METHOD
-        form = CourseModelForm
+    def get(self, request, *args, **kwargs):
+        # GET method
+        form = CourseModelForm()
         context = {"form": form}
         return render(request, self.template_name, context)
 
-    def post(self, request, * args, **kwargs):
-        # POST METHOD
+    def post(self, request, *args, **kwargs):
+        # POST method
         form = CourseModelForm(request.POST)
         if form.is_valid():
             form.save()
@@ -97,30 +225,24 @@ class CourseListView(View):
         return self.queryset
 
     def get(self, request, *args, **kwargs):
-        context = {'object_list': self.queryset}
+        context = {'object_list': self.get_queryset()}
         return render(request, self.template_name, context)
 
 
-class MyListView(CourseListView):
-    template_name = "courses/course_list.html"
-    queryset = Course.objects.filter(id=1)
-
-
-class CourseView(View):
-    template_name = "courses/course_detail.html"
+class CourseView(CourseObjectMixin, View):
+    template_name = "courses/course_detail.html"  # DetailView
 
     def get(self, request, id=None, *args, **kwargs):
-        # GET METHOD
-        context = {}
-        if id is not None:
-            # obj = Course.objects.get(id=id)
-            obj = get_object_or_404(Course, id=id)
-            context['object'] = obj
+        # GET method
+        context = {'object': self.get_object()}
         return render(request, self.template_name, context)
 
-    # def get(self, request, id=None, *args, **kwargs):
+    # def post(request, *args, **kwargs):
     #     return render(request, 'about.html', {})
+
+# HTTP METHODS
 
 
 def my_fbv(request, *args, **kwargs):
+    print(request.method)
     return render(request, 'about.html', {})
