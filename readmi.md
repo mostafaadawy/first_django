@@ -803,4 +803,26 @@ class CourseListView(View):
 ```sh
 path('', MyListView.as_view(), name='course-list'),
 ```
+### Raw Create ClassBased View
+- we should define two functions first is get that should contain the form to draw the view as_p and to allow validation
+- second function the function responsible to save the object which is post contains form to validate the post and save check it
+```sh
+class CourseCreateView(View):
+    template_name = "courses/course_create.html"
+
+    def get(self, request, * args, **kwargs):
+        # GET METHOD
+        form = CourseModelForm
+        context = {"form": form}
+        return render(request, self.template_name, context)
+
+    def post(self, request, * args, **kwargs):
+        # POST METHOD
+        form = CourseModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+        context = {"form": form}
+        return render(request, self.template_name, context)
+```
+
 
