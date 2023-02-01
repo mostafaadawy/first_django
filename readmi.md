@@ -735,4 +735,5 @@ class ArticleDeleteView(DeleteView):
 - first of all we will create new app called course so we will do the same previous steps
 - Create a new App named courses `python manage.py startapp courses`
 - Add course to your django project `in settings.py add courses to installed apps`
+- Create a Model named course `in models.py create class input argument models.Model and add fields to it `
 
