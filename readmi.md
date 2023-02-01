@@ -782,4 +782,8 @@ class CourseView(View):
             context['object'] = obj
         return render(request, self.template_name, context)
 ```
+### Raw List ClassBased View
 
+- same as for detail we create class for list 
+- also we need to define queryset
+- 
