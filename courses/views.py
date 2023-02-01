@@ -18,6 +18,11 @@ class CourseListView(View):
         return render(request, self.template_name, context)
 
 
+class MyListView(CourseListView):
+    template_name = "courses/course_list.html"
+    queryset = Course.objects.filter(id=1)
+
+
 class CourseView(View):
     template_name = "courses/course_detail.html"
 
