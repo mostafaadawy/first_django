@@ -743,4 +743,7 @@ class ArticleDeleteView(DeleteView):
 - Save a new course object in the admin from ui browser
 - confuse? start [here](https://kirr.co/9ypik6)
 - create url for Courses 
-- do not gorget to include urls file links in main url in the project
+- do not forget to include urls file links in main url in the project
+- list view in class based note that function in view function based name is do not matter but in class the name is really matter we should restricted by naming convictions so we can use `my_fbv` function inside class `CourseView` but rename it to get where we will deal with it in class as `set/post and get`
+- 
+
