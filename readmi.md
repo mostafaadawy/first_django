@@ -869,14 +869,46 @@ class CourseUpdateView(View):
                 context = {"form": form}
                 form = CourseModelForm()
         context = {"form": form}
-        return render(request, self.template_name, context)        
+        return render(request, self.template_name, context)
 ```
 ```sh
 path('<int:id>/update/', CourseUpdateView.as_view(), name='course-update'),
 ```
-- first we have to define the get object that reads id from kwargs 
+- first we have to define the get object that reads id from kwargs
 - then get the object in object or 404 to handel not found error
 - in get and post we exploit the feature of instance to load the object in view
 - we load objects and forms for validation and to draw
 - in post we check received validity then save
+### Raw Delete Class Based View
+- it is similar to update except when dele successfully we have to redirect to other route where same will not be valid 
+- remove any validation or form
+- check the snippet
+```sh
+class CourseDeleteView(View):
+    template_name = "courses/course_delete.html"
 
+    def get_object(self):
+        id = self.kwargs.get('id')
+        obj = None
+        if id is not None:
+            obj = get_object_or_404(Course, id=id)
+        return obj
+
+    def get(self, request, id=None, * args, **kwargs):
+        # GET METHOD
+        context = {}
+        obj = self.get_object()
+        if obj is not None:
+            context = {"object": obj}
+        return render(request, self.template_name, context)
+
+    def post(self, request, id=None, * args, **kwargs):
+        # POST METHOD
+        context = {}
+        obj = self.get_object()
+        if obj is not None:
+            obj.delete()
+            context = {"object": None}
+            return redirect('/courses/')
+        return render(request, self.template_name, context)
+```

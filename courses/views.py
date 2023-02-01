@@ -1,10 +1,39 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.views import View
 from .models import Course
 from .forms import CourseModelForm
 # Create your views here.
 
 # Base VIEW CLASS  = VIEW
+
+
+class CourseDeleteView(View):
+    template_name = "courses/course_delete.html"
+
+    def get_object(self):
+        id = self.kwargs.get('id')
+        obj = None
+        if id is not None:
+            obj = get_object_or_404(Course, id=id)
+        return obj
+
+    def get(self, request, id=None, * args, **kwargs):
+        # GET METHOD
+        context = {}
+        obj = self.get_object()
+        if obj is not None:
+            context = {"object": obj}
+        return render(request, self.template_name, context)
+
+    def post(self, request, id=None, * args, **kwargs):
+        # POST METHOD
+        context = {}
+        obj = self.get_object()
+        if obj is not None:
+            obj.delete()
+            context = {"object": None}
+            return redirect('/courses/')
+        return render(request, self.template_name, context)
 
 
 class CourseUpdateView(View):
