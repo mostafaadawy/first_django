@@ -734,4 +734,5 @@ class ArticleDeleteView(DeleteView):
 - this is the third method that we can use the set and get for view as class 
 - first of all we will create new app called course so we will do the same previous steps
 - Create a new App named courses `python manage.py startapp courses`
+- Add course to your django project `in settings.py add courses to installed apps`
 
