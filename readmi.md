@@ -748,6 +748,7 @@ class ArticleDeleteView(DeleteView):
 - we get an error if we use `def get(request, *args, **kwargs):` where as class we have to include self where it is class and without self we miss meta data `'CourseView' object has no attribute 'META'`
 - to solve this issue insert self in the call to get the meta data from the class `def get(self,request, *args, **kwargs):`
 - using classes has many advantages like its generic nature so we can change template html by calling it in url as we call class with its arguments where code template can be defined as property in the class  check the code 
+
 ```sh
 class CourseView(View):
     template_name = "about.html"
@@ -755,11 +756,30 @@ class CourseView(View):
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, {})
 ```
+
 - `self.template_name` calling property from class
 - and in url.py we can call  other template which overrides the property as follows:
+
 ```sh
 path('', CourseView.as_view(template_name="contact.html"), name='course-list'),
 ```
+
 - and the link will route to contact not about
 
+### Detail view
+- detail show delete requires passing ids to the class `def get(self, request, id=None, *args, **kwargs):`
+- we have to set default for id argument = None to make it not required
+```sh
+class CourseView(View):
+    template_name = "courses/course_detail.html"
+
+    def get(self, request, id=None, *args, **kwargs):
+        # GET METHOD
+        context = {}
+        if id is not None:
+            # obj = Course.objects.get(id=id)
+            obj = get_object_or_404(Course, id=id)
+            context['object'] = obj
+        return render(request, self.template_name, context)
+```
 
