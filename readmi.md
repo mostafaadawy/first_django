@@ -632,7 +632,8 @@ def get_absolute_url(self):
 - adding some important links and commenting others
 - adding some redirects
 - creating href from list and navbar
-# Class Based View List View
+# Class Based View 
+## Class Based View List View
 - Create a new App named blog `python manage.py startapp blog`
 - Add blog to your django project `in settings.py add blog to installed apps`
 - Create a Model named article `in models.py create class input argument models.Model and add fields to it `
@@ -699,7 +700,7 @@ class ArticleCreateView(CreateView):
 - in model we can create function `get_absolute_url()` that uses the kwargs in reverse function to return the url from the url name and id 
 - this function can be called as any property and we can use it with detail and update i.e. any functions in crude that uses id
 - all the methods or properties in these based classes is exists with default and we have to override it or assign value to it or use it 
-- update method or class is same as create except we need and object from the object we want to edit or update so the only thing that is increaesd on the previous code is adding `get_object` as in detail and other functions as detail check the code snippet
+- update method or class is same as create except we need and object from the object we want to edit or update so the only thing that is increased on the previous code is adding `get_object` as in detail and other functions as detail check the code snippet
 ```sh
 class ArticleUpdateView(UpdateView):
     template_name = 'articles/article_create.html'
@@ -729,8 +730,9 @@ class ArticleDeleteView(DeleteView):
 - as we delete the object if return it will give error where no record for that id in the database so we have to define the get_success to route for another link
 - as modular project all belongs to app blog should be inside even templates
 - <p style="color:red"> do not forget to make update or edit link GET method to get required object where POST is assigned to send not get </p>
-
-### Function Based View to class Based View
+# raw class based
+<p style="color:red">Next section will discuses how the ready classes we used from Django.views.generic works we will execute them line by line</p>
+# Function Based View to class Based View
 - this is the third method that we can use the set and get for view as class 
 - first of all we will create new app called course so we will do the same previous steps
 - Create a new App named courses `python manage.py startapp courses`
