@@ -743,3 +743,4 @@ class ArticleDeleteView(DeleteView):
 - Save a new course object in the admin from ui browser
 - confuse? start [here](https://kirr.co/9ypik6)
 - create url for Courses 
+- do not gorget to include urls file links in main url in the project
