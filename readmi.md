@@ -739,4 +739,5 @@ class ArticleDeleteView(DeleteView):
 - run Migration `python manage.py makemigrations` and `python manage.py migrate`
 - Create a Model Form for article create forms.py and import forms from django and article model from models can check product forms for view and validations 
 - Create `course_list.html` and `course_detail.html`and `course_create.html` and `course_delete.html` and `course_update.html` Template in folder courses templates
+- Add article Model to the admin in courses in admin.py register the new model for this app `admin.site.register(Course)` so it can be shown and crude operated from admin automatically
 
