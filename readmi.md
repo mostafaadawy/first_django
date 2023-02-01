@@ -747,4 +747,19 @@ class ArticleDeleteView(DeleteView):
 - list view in class based note that function in view function based name is do not matter but in class the name is really matter we should restricted by naming convictions so we can use `my_fbv` function inside class `CourseView` but rename it to get where we will deal with it in class as `set/post and get`
 - we get an error if we use `def get(request, *args, **kwargs):` where as class we have to include self where it is class and without self we miss meta data `'CourseView' object has no attribute 'META'`
 - to solve this issue insert self in the call to get the meta data from the class `def get(self,request, *args, **kwargs):`
+- using classes has many advantages like its generic nature so we can change template html by calling it in url as we call class with its arguments where code template can be defined as property in the class  check the code 
+```sh
+class CourseView(View):
+    template_name = "about.html"
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {})
+```
+- `self.template_name` calling property from class
+- and in url.py we can call  other template which overrides the property as follows:
+```sh
+path('', CourseView.as_view(template_name="contact.html"), name='course-list'),
+```
+- and the link will route to contact not about
+
 
