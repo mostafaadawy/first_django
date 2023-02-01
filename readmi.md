@@ -799,4 +799,7 @@ class CourseListView(View):
         context = {'object_list': self.queryset}
         return render(request, self.template_name, context)
 ```
+- we can use class that inherits our list class
+```sh
 
+```
