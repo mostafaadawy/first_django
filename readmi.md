@@ -801,5 +801,6 @@ class CourseListView(View):
 ```
 - we can use class that inherits our list class
 ```sh
-
+path('', MyListView.as_view(), name='course-list'),
 ```
+
